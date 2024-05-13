@@ -5,27 +5,40 @@ import { Button } from "../ui/button";
 
 export default function FooterNav() {
 	const urls = [
-		{ herf: "/step-1", next: "/step-2", previous: "" },
-		{ href: "/step-2", next: "step-3", previous: "/step-1" },
+		{ href: "/step-1", next: "/step-2" },
+		{ href: "/step-2", next: "/step-3", previous: "/step-1" },
 		{ href: "/step-3", next: "/summary", previous: "/step-2" },
-		{ href: "/summary", next: "", previous: "/step-3" },
+		{ href: "/summary", previous: "/step-3" },
 	];
 
 	const router = useRouter(); // for redirecting
 	const path = usePathname(); // for getting url
 
+	const currentStep = urls.find((url) => url.href === path);
+
+	function navigate(url: string) {
+		url ? router.push(url) : "";
+	}
+    console.log(currentStep)
+
 	return (
 		<footer className="w-full flex justify-between items-center ">
-			{path == "/step-1" ? (
-				""
+			{currentStep && currentStep.previous ? (
+				<Button onClick={() => navigate(currentStep.previous)}>
+					{"<"} Previous
+				</Button>
 			) : (
-				<Button onClick={() => router.back()}>{"<"} Previous</Button>
+				<div></div> // so that second button place would not shift
 			)}
 
-			<Button onClick={() => router.push("step-2")}>
-				{path == "step-3" ? "Finish" : "Next"}
-				{" > "}
-			</Button>
+			{currentStep && currentStep.next ? (
+				<Button onClick={() => navigate(currentStep.next)}>
+					{currentStep.href === "step-3" ? "Finish" : "Next"}
+					{" > "}
+				</Button>
+			) : (
+				<div></div> // so that second button place would not shift
+			)}
 		</footer>
 	);
 }
