@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { Card, CardHeader } from "@/components/ui/card";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -16,7 +17,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={poppins.className}>{children}</body>
+			<body className={poppins.className}>
+				<main className="flex justify-center items-center min-h-screen ">
+					<Card className="p-5 lg:w-[500px] min-h-96">
+						<CardHeader className="text-3xl lg:text-4xl font-bold ">Registration form</CardHeader>
+						{children}
+					</Card>
+				</main>
+			</body>
 		</html>
 	);
 }
