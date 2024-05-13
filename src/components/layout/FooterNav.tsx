@@ -22,7 +22,7 @@ export default function FooterNav() {
     console.log(currentStep)
 
 	return (
-		<footer className="w-full flex justify-between items-center ">
+		<footer className="w-full px-5 flex justify-between items-center absolute left-0 bottom-2">
 			{currentStep && currentStep.previous ? (
 				<Button onClick={() => navigate(currentStep.previous)}>
 					{"<"} Previous

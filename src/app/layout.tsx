@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Card, CardHeader } from "@/components/ui/card";
+import {
+	Card,
+	CardHeader,
+	CardFooter,
+	CardContent,
+	CardTitle,
+    CardDescription,
+} from "@/components/ui/card";
+import Steps from "@/components/layout/Steps";
+import FooterNav from "@/components/layout/FooterNav";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -18,10 +27,17 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={poppins.className}>
-				<main className="flex justify-center items-center min-h-screen ">
-					<Card className="p-5 lg:w-[500px] min-h-96">
-						<CardHeader className="text-3xl lg:text-4xl font-bold ">Registration form</CardHeader>
-						{children}
+				<main className="flex flex-col justify-center items-center gap-6 lg:gap-10 min-h-screen ">
+					<Steps />
+					<Card className="p-5 lg:w-[500px] min-h-96 relative">
+						<CardHeader>
+							<CardTitle className="lg:text-3xl">Registration form</CardTitle>
+                            <CardDescription >Enter your credentials below</CardDescription>
+                        </CardHeader>
+						<CardContent>{children}</CardContent>
+						<CardFooter >
+							<FooterNav />
+						</CardFooter>
 					</Card>
 				</main>
 			</body>
