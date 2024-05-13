@@ -19,7 +19,8 @@ export default function FooterNav() {
 	function navigate(url: string) {
 		url ? router.push(url) : "";
 	}
-    console.log(currentStep)
+
+	const isSummary = path === "/summary";
 
 	return (
 		<footer className="w-full px-5 flex justify-between items-center absolute left-0 bottom-2">
@@ -37,7 +38,13 @@ export default function FooterNav() {
 					{" > "}
 				</Button>
 			) : (
-				<div></div> // so that second button place would not shift
+				!isSummary && <div></div> // so that second button place would not shift
+			)}
+
+			{isSummary && (
+				<Button variant={"secondary"} disabled>
+					Submit
+				</Button>
 			)}
 		</footer>
 	);
