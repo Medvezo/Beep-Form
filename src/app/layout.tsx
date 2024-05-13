@@ -7,10 +7,11 @@ import {
 	CardFooter,
 	CardContent,
 	CardTitle,
-    CardDescription,
+	CardDescription,
 } from "@/components/ui/card";
 import Steps from "@/components/layout/Steps";
 import FooterNav from "@/components/layout/FooterNav";
+import { FormProvider } from "@/components/providers/FormProvider";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -28,17 +29,19 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={poppins.className}>
 				<main className="flex flex-col justify-center items-center gap-6 lg:gap-10 min-h-screen ">
-					<Steps />
-					<Card className="p-5 lg:w-[500px] min-h-96 relative">
-						<CardHeader>
-							<CardTitle className="lg:text-3xl">Registration form</CardTitle>
-                            <CardDescription >Enter your credentials below</CardDescription>
-                        </CardHeader>
-						<CardContent>{children}</CardContent>
-						<CardFooter >
-							<FooterNav />
-						</CardFooter>
-					</Card>
+					<FormProvider>
+						<Steps />
+						<Card className="p-5 lg:w-[500px] min-h-96 relative">
+							<CardHeader>
+								<CardTitle className="lg:text-3xl">Registration form</CardTitle>
+								<CardDescription>Enter your credentials below</CardDescription>
+							</CardHeader>
+							<CardContent>{children}</CardContent>
+							<CardFooter>
+								<FooterNav />
+							</CardFooter>
+						</Card>
+					</FormProvider>
 				</main>
 			</body>
 		</html>
