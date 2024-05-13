@@ -1,15 +1,18 @@
 "use client";
 
+import { useContext } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../ui/button";
+import FormContext from "../context/FormContext";
 
+const urls = [
+	{ name: "step1", href: "/step-1", next: "/step-2" },
+	{ name: "step2", href: "/step-2", next: "/step-3", previous: "/step-1" },
+	{ name: "step3", href: "/step-3", next: "/summary", previous: "/step-2" },
+	{ name: "summary", href: "/summary", previous: "/step-3" },
+];
 export default function FooterNav() {
-	const urls = [
-		{ href: "/step-1", next: "/step-2" },
-		{ href: "/step-2", next: "/step-3", previous: "/step-1" },
-		{ href: "/step-3", next: "/summary", previous: "/step-2" },
-		{ href: "/summary", previous: "/step-3" },
-	];
+	const { state } = useContext(FormContext);
 
 	const router = useRouter(); // for redirecting
 	const path = usePathname(); // for getting url
@@ -21,6 +24,7 @@ export default function FooterNav() {
 	}
 
 	const isSummary = path === "/summary";
+	let isValid = state.validity[`${currentStep?.name}Valid`];
 
 	return (
 		<footer className="w-full px-5 flex justify-between items-center absolute left-0 bottom-2">
@@ -33,7 +37,7 @@ export default function FooterNav() {
 			)}
 
 			{currentStep && currentStep.next ? (
-				<Button onClick={() => navigate(currentStep.next)}>
+				<Button disabled={!isValid} onClick={() => navigate(currentStep.next)}>
 					{currentStep.href === "step-3" ? "Finish" : "Next"}
 					{" > "}
 				</Button>
