@@ -27,10 +27,14 @@ export default function Page() {
 
 	return (
 		<form className="flex justify-around items-center w-full gap-2">
-			{options.map((option, index) => (
+			{options.map((option, _) => (
 				<Label
-					key={index}
-					className="flex flex-col gap-5 font-bold text-lg justify-center items-center w-1/3 border-2 border-violet-500 rounded-lg py-2 px-10 hover:bg-purple-light transition-all duration-200 ease-in-out "
+					key={option.use}
+					className={`flex flex-col gap-5 font-bold text-lg justify-center items-center w-1/3 border-2 ${
+						state.usage.use === option.use
+							? "bg-purple-main hover:bg-purple-main"
+							: "hover:bg-purple-light"
+					} border-violet-500 rounded-lg py-2 px-10  transition-all duration-200 ease-in-out `}
 				>
 					<Input
 						type="radio"
