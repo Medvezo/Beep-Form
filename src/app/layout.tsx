@@ -6,12 +6,11 @@ import {
 	CardHeader,
 	CardFooter,
 	CardContent,
-	CardTitle,
-	CardDescription,
 } from "@/components/ui/card";
 import Steps from "@/components/layout/Steps";
 import FooterNav from "@/components/layout/FooterNav";
 import { FormProvider } from "@/components/providers/FormProvider";
+import HeaderNav from "@/components/layout/HeaderNav";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -33,8 +32,7 @@ export default function RootLayout({
 						<Steps />
 						<Card className="p-5 lg:w-[500px] min-h-96 relative">
 							<CardHeader>
-								<CardTitle className="lg:text-3xl">Registration form</CardTitle>
-								<CardDescription>Enter your credentials below</CardDescription>
+								<HeaderNav />
 							</CardHeader>
 							<CardContent>{children}</CardContent>
 							<CardFooter>
