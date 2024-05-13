@@ -13,6 +13,11 @@ interface State {
 	usage: {
 		use: string;
 	};
+	validity: {
+		step1Valid: boolean;
+		step2Valid: boolean;
+		step3Valid: boolean;
+	};
 }
 type Action =
 	| { type: "UPDATE_PERSONAL"; payload: Partial<State["personalDetails"]> }
@@ -32,24 +37,46 @@ export const initialState: State = {
 	usage: {
 		use: "",
 	},
+	validity: {
+		step1Valid: false,
+		step2Valid: false,
+		step3Valid: false,
+	},
 };
 
 export function formReducer(state: State, action: Action) {
 	switch (action.type) {
 		case "UPDATE_PERSONAL":
-			return {
-				...state,
-				personalDetails: { ...state.personalDetails, ...action.payload },
+			const updatedPersonalDetails = {
+				...state.personalDetails,
+				...action.payload,
 			};
-		case "UPDATE_CONTACT":
+			const step1Valid =
+				updatedPersonalDetails.firstName !== "" &&
+				updatedPersonalDetails.lastName !== "" &&
+				updatedPersonalDetails.age !== "";
 			return {
 				...state,
-				contactInfo: { ...state.contactInfo, ...action.payload },
+				personalDetails: updatedPersonalDetails,
+				validity: { ...state.validity, step1Valid },
+			};
+
+		case "UPDATE_CONTACT":
+			const updatedContactInfo = { ...state.contactInfo, ...action.payload };
+			const step2Valid =
+				updatedContactInfo.email !== "" && updatedContactInfo.password !== "";
+			return {
+				...state,
+				contactInfo: updatedContactInfo,
+				validity: { ...state.validity, step2Valid },
 			};
 		case "UPDATE_USAGE":
+			const updatedUsage = { ...state.usage, ...action.payload };
+			const step3Valid = updatedUsage.use !== "";
 			return {
 				...state,
-				usage: { ...state.usage, ...action.payload },
+				usage: updatedUsage,
+				validity: { ...state.validity, step3Valid },
 			};
 		default:
 			throw new Error(`Unhandled action type: ${action}`);
