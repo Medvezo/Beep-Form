@@ -6,13 +6,13 @@
 	--foreground-rgb: 18, 18, 18;
 	--background-rgb: 250, 250, 250;
   --purple-main: #9374EB;
-  --purple-dark: #705387;
+  --purple-dark: #2B0055;
   --purple-light: #EFE6FD;
 }
 
 body {
 	color: rgb(var(--foreground-rgb));
-	background: rgb(var(--background-rgb));
+	background: var(--purple-dark);
 }
 
 @layer utilities {

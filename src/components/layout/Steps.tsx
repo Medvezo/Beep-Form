@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 export default function Steps() {
 	const steps = [
 		{ href: "/step-1", num: 1 },
-		{ href: "/step-2 ", num: 2 },
+		{ href: "/step-2", num: 2 },
 		{ href: "/step-3", num: 3 },
 	];
 
