@@ -1,15 +1,29 @@
+"use client";
+// It's not the best practice to have page as a client component because of SEO issues but i neglect that here to not create additional container component for that
+
+import { useContext } from "react";
+import FormContext from "@/components/context/FormContext";
 import { GiPalmTree } from "react-icons/gi";
 import { FaGraduationCap } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
+const options = [
+	{ use: "Hobby", icon: GiPalmTree },
+	{ use: "Work", icon: MdWork },
+	{ use: "Education", icon: FaGraduationCap },
+];
+
 export default function Page() {
-	const options = [
-		{ use: "Hobby", icon: GiPalmTree },
-		{ use: "Work", icon: MdWork },
-		{ use: "Education", icon: FaGraduationCap },
-	];
+	const { state, dispatch } = useContext(FormContext);
+
+	const handleChange = (e: any) => {
+		dispatch({
+			type: "UPDATE_USAGE",
+			payload: { [e.target.name]: e.target.value },
+		});
+	};
 
 	return (
 		<form className="flex justify-around items-center w-full gap-2">
@@ -23,6 +37,7 @@ export default function Page() {
 						className="h-0 w-0 border-0"
 						name="use"
 						value={option.use}
+						onChange={handleChange}
 					/>
 					<option.icon className="h-10 w-10" />
 					{option.use}
