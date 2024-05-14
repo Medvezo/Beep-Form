@@ -15,8 +15,11 @@ import HeaderNav from "@/components/layout/HeaderNav";
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Beep Form",
-	description: "Task #1 Multi-step Form (UI/UX focused)",
+	title: {
+		template: "%s | Beep Form",
+		default: "Beep Form",
+	},
+	description: "Task #1 Multi-step Form ",
 };
 
 export default function RootLayout({
@@ -35,7 +38,7 @@ export default function RootLayout({
 								<HeaderNav />
 							</CardHeader>
 							<CardContent>{children}</CardContent>
-							<CardFooter >
+							<CardFooter>
 								<FooterNav />
 							</CardFooter>
 						</Card>
