@@ -3,13 +3,18 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useFormContext } from "@/hooks/useFormContext";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page() {
-	const { state, dispatch } = useFormContext()
+	const { state, dispatch } = useFormContext();
+
+	const router = useRouter();
 
 	// URL enter prevention
-	if (!state.validity.step1Valid) redirect("/step-1");
+	useEffect(() => {
+		if (!state.validity.step1Valid) router.replace("step-1");
+	}, [state.validity.step1Valid, router]);
 
 	const handleChange = (e: any) => {
 		dispatch({

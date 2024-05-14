@@ -2,15 +2,20 @@
 // It's not the best practice to have page as a client component because of SEO issues but i neglect that here to not create additional container component for that
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { options } from "@/lib/const";
 import { useFormContext } from "@/hooks/useFormContext";
+import { useEffect } from "react";
 
 export default function Page() {
 	const { state, dispatch } = useFormContext();
 
+	const router = useRouter();
+
 	// URL enter prevention
-	if(!state.validity.step2Valid) redirect('step-2')
+	useEffect(() => {
+		if (!state.validity.step2Valid) router.replace("step-2");
+	}, [state.validity.step2Valid, router]);
 
 	const handleChange = (e: any) => {
 		dispatch({

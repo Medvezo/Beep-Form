@@ -3,15 +3,18 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useFormContext } from "@/hooks/useFormContext";
+import { useEffect } from "react";
 
 export default function Page() {
 	const { state } = useFormContext();
 
+	const router = useRouter()
 	// URL enter prevention
-	if (!state.validity.step3Valid) redirect("/step-3");
-
+	useEffect(() => {
+		if (!state.validity.step3Valid) router.replace("step-3");
+	}, [state.validity.step3Valid, router]);
 	return (
 		<div className="flex flex-col gap-10  truncate ">
 			<section className="flex flex-col gap-2 justify-center items-center">
