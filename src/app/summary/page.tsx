@@ -6,9 +6,13 @@ import { MdEmail } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
 import FormContext from "@/components/context/FormContext";
 import { useContext } from "react";
+import { redirect } from "next/navigation";
 
 export default function Page() {
 	const { state } = useContext(FormContext);
+
+	// URL enter prevention
+	if (!state.validity.step3Valid) redirect("/step-3");
 
 	return (
 		<div className="flex flex-col gap-10  ">

@@ -8,6 +8,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { redirect } from "next/navigation";
 
 const options = [
 	{ use: "Hobby", icon: GiPalmTree },
@@ -17,6 +18,9 @@ const options = [
 
 export default function Page() {
 	const { state, dispatch } = useContext(FormContext);
+
+	// URL enter prevention
+	if(!state.validity.step2Valid) redirect('step-2')
 
 	const handleChange = (e: any) => {
 		dispatch({

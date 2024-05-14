@@ -17,6 +17,7 @@ interface State {
 		step1Valid: boolean;
 		step2Valid: boolean;
 		step3Valid: boolean;
+		[key: string]: boolean;  // Allow any string index to return a boolean 
 	};
 }
 type Action =

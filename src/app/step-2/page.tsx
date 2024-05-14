@@ -4,10 +4,14 @@
 import FormContext from "@/components/context/FormContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { redirect } from "next/navigation";
 import { useContext } from "react";
 
 export default function Page() {
 	const { state, dispatch } = useContext(FormContext);
+
+	// URL enter prevention
+	if (!state.validity.step1Valid) redirect("/step-1");
 
 	const handleChange = (e: any) => {
 		dispatch({
