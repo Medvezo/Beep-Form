@@ -1,15 +1,13 @@
 "use client";
 // It's not the best practice to have page as a client component because of SEO issues but i neglect that here to not create additional container component for that
-
-import { useContext } from "react";
-import FormContext from "@/components/context/FormContext";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { redirect } from "next/navigation";
 import { options } from "@/lib/const";
+import { useFormContext } from "@/hooks/useFormContext";
 
 export default function Page() {
-	const { state, dispatch } = useContext(FormContext);
+	const { state, dispatch } = useFormContext();
 
 	// URL enter prevention
 	if(!state.validity.step2Valid) redirect('step-2')

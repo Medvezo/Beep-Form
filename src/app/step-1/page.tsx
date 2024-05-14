@@ -1,13 +1,12 @@
 "use client";
 // It's not the best practice to have page as a client component because of SEO issues but i neglect that here to not create additional container component for that
 
-import FormContext from "@/components/context/FormContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useContext } from "react";
+import { useFormContext } from "@/hooks/useFormContext";
 
 export default function Page() {
-	const { state, dispatch } = useContext(FormContext);
+	const { state, dispatch } = useFormContext();
 
 	const handleChange = (e: any) => {
 		dispatch({

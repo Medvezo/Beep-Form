@@ -1,13 +1,12 @@
 "use client";
 
-import { useContext } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import FormContext from "../context/FormContext";
 import { urls } from "@/lib/const";
+import { useFormContext } from "@/hooks/useFormContext";
 
 export default function FooterNav() {
-	const { state } = useContext(FormContext);
+	const { state } = useFormContext();
 
 	const router = useRouter(); // for redirecting
 	const path = usePathname(); // for getting url

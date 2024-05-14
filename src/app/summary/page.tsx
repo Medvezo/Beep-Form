@@ -1,15 +1,13 @@
 "use client";
 // It's not the best practice to have page as a client component because of SEO issues but i neglect that here to not create additional container component for that
-
 import { IoPersonSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaMouse } from "react-icons/fa";
-import FormContext from "@/components/context/FormContext";
-import { useContext } from "react";
 import { redirect } from "next/navigation";
+import { useFormContext } from "@/hooks/useFormContext";
 
 export default function Page() {
-	const { state } = useContext(FormContext);
+	const { state } = useFormContext();
 
 	// URL enter prevention
 	if (!state.validity.step3Valid) redirect("/step-3");
