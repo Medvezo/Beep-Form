@@ -21,10 +21,25 @@ export default function Page() {
 					<IoPersonSharp className="w-8 h-8 " />
 					<h2 className="text-lg font-semibold">Personal Details</h2>
 				</div>
-				<div className="flex flex-col justify-center items-start gap-5 font-bold w-full text-slate-500 text-lg  border border-violet-500 rounded-lg py-2 px-5">
-					<p>First Name: {state.personalDetails.firstName}</p>
-					<p>Last Name: {state.personalDetails.lastName}</p>
-					<p>Birthdate: {state.personalDetails.age}</p>
+				<div className="flex flex-col justify-center items-start gap-5 font-bold w-full text-slate-400 text-lg  border border-violet-500 rounded-lg py-2 px-5">
+					<p>
+						First Name:{" "}
+						<strong className="text-slate-950">
+							{state.personalDetails.firstName}
+						</strong>
+					</p>
+					<p>
+						Last Name:{" "}
+						<strong className="text-slate-950">
+							{state.personalDetails.lastName}
+						</strong>
+					</p>
+					<p>
+						Birthdate:{" "}
+						<strong className="text-slate-950">
+							{state.personalDetails.age}
+						</strong>
+					</p>
 				</div>
 			</section>
 
@@ -33,9 +48,19 @@ export default function Page() {
 					<MdEmail className="w-8 h-8" />
 					<h2 className="text-lg font-semibold">Contact Information</h2>
 				</div>
-				<div className="flex flex-col justify-center items-start gap-5 font-bold w-full text-slate-500 text-lg  border border-violet-500 rounded-lg py-2 px-5">
-					<p>Email: {state.contactInfo.email}</p>
-					<p>Password: {state.contactInfo.password}</p>
+				<div className="flex flex-col justify-center items-start gap-5 font-bold w-full text-slate-400 text-lg  border border-violet-500 rounded-lg py-2 px-5">
+					<p>
+						Email:{" "}
+						<strong className="text-slate-950">
+							{state.contactInfo.email}
+						</strong>
+					</p>
+					<p>
+						Password:{" "}
+						<strong className="text-slate-950">
+							{state.contactInfo.password}
+						</strong>
+					</p>
 				</div>
 			</section>
 
@@ -44,8 +69,10 @@ export default function Page() {
 					<FaMouse className="w-8 h-8" />
 					<h2 className="text-lg font-semibold">Usage</h2>
 				</div>
-				<div className="flex flex-col justify-center items-start gap-5 font-bold w-full text-slate-500 text-lg  border border-violet-500 rounded-lg py-2 px-5">
-					<p>Type: {state.usage.use}</p>
+				<div className="flex flex-col justify-center items-start gap-5 font-bold w-full text-slate-400 text-lg  border border-violet-500 rounded-lg py-2 px-5">
+					<p>
+						Type: <strong className="text-slate-950">{state.usage.use} </strong>
+					</p>
 				</div>
 			</section>
 		</div>
