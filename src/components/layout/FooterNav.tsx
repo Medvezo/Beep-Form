@@ -4,13 +4,8 @@ import { useContext } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import FormContext from "../context/FormContext";
+import { urls } from "@/lib/const";
 
-const urls = [
-	{ name: "step1", href: "/step-1", next: "/step-2" },
-	{ name: "step2", href: "/step-2", next: "/step-3", previous: "/step-1" },
-	{ name: "step3", href: "/step-3", next: "/summary", previous: "/step-2" },
-	{ name: "summary", href: "/summary", previous: "/step-3" },
-];
 export default function FooterNav() {
 	const { state } = useContext(FormContext);
 

@@ -3,18 +3,10 @@
 
 import { useContext } from "react";
 import FormContext from "@/components/context/FormContext";
-import { GiPalmTree } from "react-icons/gi";
-import { FaGraduationCap } from "react-icons/fa";
-import { MdWork } from "react-icons/md";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { redirect } from "next/navigation";
-
-const options = [
-	{ use: "Hobby", icon: GiPalmTree },
-	{ use: "Work", icon: MdWork },
-	{ use: "Education", icon: FaGraduationCap },
-];
+import { options } from "@/lib/const";
 
 export default function Page() {
 	const { state, dispatch } = useContext(FormContext);

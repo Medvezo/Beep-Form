@@ -1,16 +1,9 @@
 "use client";
-
 import { usePathname } from "next/navigation";
+import { steps } from "@/lib/const";
 
 export default function Steps() {
-	const steps = [
-		{ href: "/step-1", num: 1 },
-		{ href: "/step-2", num: 2 },
-		{ href: "/step-3", num: 3 },
-	];
-
 	const path = usePathname();
-	console.log(path);
 
 	return (
 		<section className="flex justify-center items-center gap-5 lg:gap-16">
@@ -26,4 +19,4 @@ export default function Steps() {
 			))}
 		</section>
 	);
-}
+}	
