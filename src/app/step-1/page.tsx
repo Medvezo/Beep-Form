@@ -17,7 +17,7 @@ export default function Page() {
 	};
 
 	return (
-		<form className="space-y-5">
+		<form className="space-y-5 ">
 			<div className="flex flex-col w-full max-w-sm items-start justify-center gap-2">
 				<Label htmlFor="firstName" className="font-bold">
 					First Name:

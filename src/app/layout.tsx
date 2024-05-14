@@ -27,20 +27,20 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={poppins.className}>
-				<main className="flex flex-col justify-center items-center gap-6 lg:gap-10 min-h-screen ">
-					<FormProvider>
+				<FormProvider>
+					<main className="flex flex-col justify-center items-center gap-6 lg:gap-10 min-h-screen ">
 						<Steps />
-						<Card className="p-5 lg:w-[500px] min-h-96 relative">
+						<Card className="p-3 w-full max-w-96 sm:max-w-md lg:max-w-xl sm:w-[500px] min-h-[434px] relative space-y-3">
 							<CardHeader>
 								<HeaderNav />
 							</CardHeader>
 							<CardContent>{children}</CardContent>
-							<CardFooter>
+							<CardFooter >
 								<FooterNav />
 							</CardFooter>
 						</Card>
-					</FormProvider>
-				</main>
+					</main>
+				</FormProvider>
 			</body>
 		</html>
 	);

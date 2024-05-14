@@ -30,7 +30,7 @@ export default function Page() {
 	};
 
 	return (
-		<form className="flex justify-around items-center w-full gap-2">
+		<form className="flex justify-around items-center w-full gap-2 ">
 			{options.map((option, _) => (
 				<Label
 					key={option.use}
@@ -38,7 +38,7 @@ export default function Page() {
 						state.usage.use === option.use
 							? "bg-purple-main hover:bg-purple-main"
 							: "hover:bg-purple-light"
-					} border-violet-500 rounded-lg py-2 px-10  transition-all duration-200 ease-in-out `}
+					} border-violet-500 rounded-lg py-10 px-10  transition-all duration-200 ease-in-out `}
 				>
 					<Input
 						type="radio"
