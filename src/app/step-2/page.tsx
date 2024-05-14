@@ -49,10 +49,16 @@ export default function Page() {
 			</div>
 
 			<div className="flex flex-col w-full max-w-sm items-start justify-center gap-2">
-				<Label htmlFor="repeat-password" className="font-bold">
+				<Label htmlFor="repeatPassword" className="font-bold">
 					Repeat Password:
 				</Label>
-				<Input type="password" id="repeat-password" placeholder="***********" />
+				<Input
+					type="password"
+					id="repeatPassword"
+					placeholder="***********"
+					value={state.contactInfo.repeatPassword}
+					onChange={handleChange}
+				/>
 			</div>
 		</form>
 	);

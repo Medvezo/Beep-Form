@@ -9,6 +9,7 @@ interface State {
 	contactInfo: {
 		email: string;
 		password: string;
+		repeatPassword: string;
 	};
 	usage: {
 		use: string;
@@ -17,7 +18,7 @@ interface State {
 		step1Valid: boolean;
 		step2Valid: boolean;
 		step3Valid: boolean;
-		[key: string]: boolean;  // Allow any string index to return a boolean 
+		[key: string]: boolean; // Allow any string index to return a boolean
 	};
 }
 type Action =
@@ -34,6 +35,7 @@ export const initialState: State = {
 	contactInfo: {
 		email: "",
 		password: "",
+		repeatPassword: "",
 	},
 	usage: {
 		use: "",
@@ -65,7 +67,10 @@ export function formReducer(state: State, action: Action) {
 		case "UPDATE_CONTACT":
 			const updatedContactInfo = { ...state.contactInfo, ...action.payload };
 			const step2Valid =
-				updatedContactInfo.email !== "" && updatedContactInfo.password !== "";
+				updatedContactInfo.email !== "" &&
+				updatedContactInfo.password !== "" &&
+				updatedContactInfo.repeatPassword !== "" &&
+				updatedContactInfo.repeatPassword === updatedContactInfo.password;
 			return {
 				...state,
 				contactInfo: updatedContactInfo,
