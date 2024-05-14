@@ -1,12 +1,13 @@
 "use client";
 
-import  { useReducer } from 'react';
-import FormContext, { formReducer, initialState } from "../context/FormContext";
+import { useReducer } from "react";
+import FormContext, { formReducer } from "../context/FormContext";
+import { initialState } from "@/lib/const";
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
-    const [state, dispatch] = useReducer(formReducer, initialState);
+	const [state, dispatch] = useReducer(formReducer, initialState);
 
-    const value = { state, dispatch };
+	const value = { state, dispatch };
 
-    return <FormContext.Provider value={value}>{children}</FormContext.Provider>;
+	return <FormContext.Provider value={value}>{children}</FormContext.Provider>;
 }

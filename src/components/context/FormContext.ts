@@ -1,26 +1,6 @@
 import { Dispatch, createContext } from "react";
 import { State, Action } from "@/lib/types";
-
-export const initialState: State = {
-	personalDetails: {
-		firstName: "",
-		lastName: "",
-		age: "",
-	},
-	contactInfo: {
-		email: "",
-		password: "",
-		repeatPassword: "",
-	},
-	usage: {
-		use: "",
-	},
-	validity: {
-		step1Valid: false,
-		step2Valid: false,
-		step3Valid: false,
-	},
-};
+import { initialState } from "@/lib/const";
 
 // it's more preferrable i would say to have another "store" for this reducer
 export function formReducer(state: State, action: Action) {
